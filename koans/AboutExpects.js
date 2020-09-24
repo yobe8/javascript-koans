@@ -27,7 +27,7 @@ describe('About Expects', function() {
   // Sometimes you need to be precise about what you "type."
   it('should assert equality with ===', function() {
     var expectedValue = '2';
-    var actualValue = (1 + 1).toString();
+    var actualValue = (1 + 1).toString(); // 배운 부분. 숫자에 괄호 처리를 하면 몇 가지 함수를 사용할 수 있다.
 
   // toBe() will always use === to compare.
     expect(actualValue).toBe(expectedValue);
