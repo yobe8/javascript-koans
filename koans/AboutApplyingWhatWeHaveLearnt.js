@@ -66,7 +66,8 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
 
-    var sum = _.reduce(_.range(3,1000,3),function(a,b){return a+b;})+_.reduce(_.range(5,1000,5),function(a,b){return a+b;})
+    var sum = _.reduce(_.range(3,1000,3),function(a,b){return a+b;})+_.reduce(_.range(5,1000,5),function(a,b){return a+b;})-_.reduce(_.range(15,1000,15),function(a,b){return a+b;})
+		// 3과 5의 배수의 중복을 제거하면 됐군.
     /* try chaining range() and reduce() */
 
     expect(233168).toBe(sum);
