@@ -75,21 +75,43 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
    it("should count the ingredient occurrence (imperative)", function () {
-    var ingredientCount = { "{ingredient name}": 0 };
+    var ingredientCount = { "{ingredient name}": 0 }; // Q. 그런데 왜 여기에 key 값을 {}로 감싼걸까?
 
     for (i = 0; i < products.length; i+=1) {
         for (j = 0; j < products[i].ingredients.length; j+=1) {
             ingredientCount[products[i].ingredients[j]] = (ingredientCount[products[i].ingredients[j]] || 0) + 1;
-        }
+        } 
     }
+    /*
+    ingredientCount[products[i].ingredients[j]] = (ingredientCount[products[i].ingredients[j]] || 0) + 1;
+    왼쪽 항은 객체의 key를 생성시키고 오른쪽 항은 value를 생성시킨다. 
+    오른쪽 항에 ||이 들어간 이유는 최초의 카운팅을 할 때는 반환할 숫자 값이 없기 때문이고, 이후에는 주어진 숫자에 +1을 할 수 있다.
+    그냥 +1이라고 하면 양수를 표시하는 것이기 때문에 카운팅이 되지 않는다.
+    ingredientCount를 객체로 생성해두면 객체 형태를 유지하면서 카운팅이 되고, 만약 배열로 생성했다면 배열로 카운팅이 된다.
+    */
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+    
+    ingredientCount[_(products).chain()
+    .map(function(obj) { return obj.ingredients; })
+    .flatten()
+    .reduce(function(name1,name2) { return name1 === name2 ? name1 : name2 }, 0)
+    .value()]
+    =
+    ingredientCount[_(products).chain()
+    .map(function(obj) { return obj.ingredients; })
+    .flatten()
+    .reduce(function(name1,name2) { return name1 === name2 ? name1 : name2 }, 0)
+    .value()]
+
+    console.log(ingredientCount);
+
 
     expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
   });
