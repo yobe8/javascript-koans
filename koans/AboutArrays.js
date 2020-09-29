@@ -62,7 +62,7 @@ describe("About Arrays", function() {
         refArray[1] = "changed in function";
     }
     passedByReference(array);
-    expect(array[1]).toBe("changed in function"); //배열은 함수를 통한 전달로 변경할 수 있다.
+    expect(array[1]).toBe("changed in function"); //배열은 함수의 인수를 통한 전달로도 변경할 수 있다.
 
     var assignedArray = array;
     assignedArray[5] = "changed in assignedArray";

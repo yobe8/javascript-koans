@@ -98,29 +98,26 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
     
-    ingredientCount[_(products).chain()
-    .map(function(obj) { return obj.ingredients; })
-    .flatten()
-    .reduce(function(name1,name2) { return name1 === name2 ? name1 : name2 }, 0)
-    .value()]
-    =
-    ingredientCount[_(products).chain()
-    .map(function(obj) { return obj.ingredients; })
-    .flatten()
-    .reduce(function(name1,name2) { return name1 === name2 ? name1 : name2 }, 0)
-    .value()]
+  _(products).chain()
+    .map(function(obj) { return obj.ingredients})
+    .flatten() // ingredient names 배열 완성.
+    .reduce(function(name1,name2) {ingredientCount[name1] = (ingredientCount[name1] || 0) + 1; return name2} )
+    // reduce를 정확히 이해하지 못하고 있었네.
+    .value()
+    
 
     console.log(ingredientCount);
 
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+  
   it("should find the largest prime factor of a composite number", function () {
-
+    //합성수에서 가장 큰 소수를 찾아라.
+    
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
@@ -139,5 +136,4 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
 });
